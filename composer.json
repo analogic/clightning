@@ -1,0 +1,19 @@
+{
+  "name": "analogic/lightning-charge-client-php7",
+  "description": "PHP7 client for the Lightning Charge REST API",
+  "version": "0.1.4",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.1.0",
+    "symfony/serializer": "^4.0",
+    "symfony/property-access": "^4.0",
+    "symfony/property-info": "^4.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.4",
+    "nbobtc/bitcoind-php": "1.0.*@dev"
+  },
+  "autoload": {
+    "psr-4": {"CLightning\\": "src/"}
+  }
+}
