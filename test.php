@@ -66,6 +66,17 @@ class CLightningClientTest extends \PHPUnit\Framework\TestCase
         $c2 = $this->getLclient2();
         $info2 = $c2->getinfo();
 
+        $c2->connect($info1['id'], 'localhost:'.$info1['port']);
+        $this->assertNotEmpty($c2->listPeers());
+        $this->assertNotEmpty($c1->listPeers());
+
+        $address = $c1->newaddr();
+        $this->getBclient1()->sendtoaddress($address, 0.1);
+        sleep(15);
+
+        $this->assertArrayHasKey('tx', $c1->fundchannel($info2['id'], 10000));
+        sleep(15);
+
         $label = uniqid();
         $invoice = $this->getLclient2()->invoice(100*1000, $label, "moje platba 1");
         $this->assertNotEmpty($invoice->getBolt11());

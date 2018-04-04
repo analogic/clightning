@@ -4,86 +4,125 @@ namespace CLightning;
 
 class Channel
 {
-    protected $from;
-    protected $to;
-    protected $baseFee;
-    protected $proportionalFee;
+    protected $source;
+    protected $destination;
     protected $shortChannelId;
     protected $flags;
-    protected $lastUpdate;
-    protected $delay;
-    protected $satoshis;
     protected $active;
     protected $public;
-    
-    public function __construct(array $data)
+    protected $satoshis;
+    protected $lastUpdate;
+    protected $baseFeeMillisatoshi;
+    protected $feePerMillionth;
+    protected $delay;
+
+    public function getSource(): string
     {
-        $this->from = $data['from'];
-        $this->to = $data['to'];
-        $this->baseFee = $data['base_fee'];
-        $this->proportionalFee = $data['proportional_fee'];
-        $this->shortChannelId = $data['short_channel_id'];
-        $this->flags = $data['flags'];
-        $this->lastUpdate = $data['last_update'];
-        $this->delay = $data['delay'];
-        $this->satoshis = $data['satoshis'];
-        $this->active = $data['active'];
-        $this->public = $data['public'];
+        return $this->source;
     }
-    
-    public function getFrom(): ?string
+
+    public function setSource(string $source): void
     {
-        return $this->from;
+        $this->source = $source;
     }
-    
-    public function getTo(): ?string
+
+    public function getDestination(): string
     {
-        return $this->to;
+        return $this->destination;
     }
-    
-    public function getBaseFee(): ?int
+
+    public function setDestination(string $destination): void
     {
-        return $this->baseFee;
+        $this->destination = $destination;
     }
-    
-    public function getProportionalFee(): ?int
-    {
-        return $this->proportionalFee;
-    }
-    
-    public function getShortChannelId(): ?string
+
+    public function getShortChannelId(): string
     {
         return $this->shortChannelId;
     }
-    
-    public function getFlags(): ?int
+
+    public function setShortChannelId(string $shortChannelId): void
+    {
+        $this->shortChannelId = $shortChannelId;
+    }
+
+    public function getFlags(): int
     {
         return $this->flags;
     }
-    
-    public function getLastUpdate(): ?int
+
+    public function setFlags(int $flags): void
     {
-        return $this->lastUpdate;
+        $this->flags = $flags;
     }
-    
-    public function getDelay(): ?int
-    {
-        return $this->delay;
-    }
-    
-    public function getSatoshis(): ?int
-    {
-        return $this->satoshis;
-    }
-    
-    public function getActive(): ?bool
+
+    public function isActive(): bool
     {
         return $this->active;
     }
-    
-    public function getPublic(): ?bool
+
+    public function setActive(bool $active): void
+    {
+        $this->active = $active;
+    }
+
+    public function isPublic(): bool
     {
         return $this->public;
     }
 
+    public function setPublic(bool $public): void
+    {
+        $this->public = $public;
+    }
+
+    public function getSatoshis(): int
+    {
+        return $this->satoshis;
+    }
+
+    public function setSatoshis(int $satoshis): void
+    {
+        $this->satoshis = $satoshis;
+    }
+
+    public function getLastUpdate(): int
+    {
+        return $this->lastUpdate;
+    }
+
+    public function setLastUpdate(int $lastUpdate): void
+    {
+        $this->lastUpdate = $lastUpdate;
+    }
+
+    public function getBaseFeeMillisatoshi(): int
+    {
+        return $this->baseFeeMillisatoshi;
+    }
+
+    public function setBaseFeeMillisatoshi(int $baseFeeMillisatoshi): void
+    {
+        $this->baseFeeMillisatoshi = $baseFeeMillisatoshi;
+    }
+
+    public function getFeePerMillionth(): int
+    {
+        return $this->feePerMillionth;
+    }
+
+    public function setFeePerMillionth(int $feePerMillionth): void
+    {
+        $this->feePerMillionth = $feePerMillionth;
+    }
+
+    public function getDelay(): int
+    {
+        return $this->delay;
+    }
+
+    public function setDelay(int $delay): void
+    {
+        $this->delay = $delay;
+    }
 }

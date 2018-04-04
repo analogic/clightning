@@ -61,7 +61,7 @@ class CLightning
                     } else {
                         $object = $this->encoder->decode($buffer, 'json');
                     }
-                    //echo "----> ".$buffer;
+                    echo "----> ".$buffer;
                     fclose($fp);
                     return $object;
                 } catch (NotEncodableValueException $e) {
@@ -158,10 +158,9 @@ class CLightning
     /**
      * Show channel {short_channel_id} (or all known channels, if no {short_channel_id})
      */
-    public function listchannels(string $short_channel_id = null)
+    public function listChannels(string $short_channel_id = null)
     {
-        $response = $this->execute('listchannels', ['short_channel_id' => $short_channel_id]);
-        return array_map(function(array $d) { return new Channel($d); }, $response['invoices']);
+        return $this->execute('listchannels', ['short_channel_id' => $short_channel_id], ChannelList::class);
     }
 
     /**
@@ -285,7 +284,7 @@ class CLightning
     /**
      * Show current peers, if {level} is set, include logs for {id}
      */
-    public function listpeers()
+    public function listPeers()
     {
         return $this->execute('listpeers', [])['peers'];
     }
