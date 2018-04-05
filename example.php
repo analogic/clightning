@@ -4,8 +4,8 @@ require_once 'vendor/autoload.php';
 $cl1 = new \CLightning\CLightning('unix:///data/cln/lightning-1/rpc');
 $cl2 = new \CLightning\CLightning('unix:///data/cln/lightning-2/rpc');
 
-var_dump($cl1->listChannels());
-die();
+var_dump($cl1->listFunds());
+var_dump($cl2->listFunds());
 
 $info1 = $cl1->getinfo();
 var_dump($info1);

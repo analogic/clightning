@@ -5,10 +5,10 @@ namespace CLightning;
 class ChannelFunds
 {
     protected $peerId;
+    protected $shortChannelId;
     protected $channelSat;
     protected $channelTotalSat;
     protected $fundingTxid;
-
 
     public function setPeerId(string $peerId): void
     {
@@ -28,6 +28,16 @@ class ChannelFunds
     public function setFundingTxid(string $fundingTxid): void
     {
         $this->fundingTxid = $fundingTxid;
+    }
+
+    public function getShortChannelId(): string
+    {
+        return $this->shortChannelId;
+    }
+
+    public function setShortChannelId(string $shortChannelId): void
+    {
+        $this->shortChannelId = $shortChannelId;
     }
 
     public function getFundingTxid(): ?string
