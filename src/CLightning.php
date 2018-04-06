@@ -284,9 +284,9 @@ class CLightning
     /**
      * Show current peers, if {level} is set, include logs for {id}
      */
-    public function listPeers()
+    public function listPeers(?string $level = null, ?string $id = null)
     {
-        return $this->execute('listpeers', [])['peers'];
+        return $this->execute('listpeers', ['level' => $level, 'id' => $id], PeerList::class);
     }
 
     /**
