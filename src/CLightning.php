@@ -50,7 +50,7 @@ class CLightning
             $buffer = '';
 
             while (!feof($fp)) {
-                $data = fread($fp, 1024);
+                $data = fgets($fp, 1024);
                 $buffer .= $data;
                 if (strlen($data) === 0) {
                     throw new \RuntimeException('Connection to RPC server lost.');
