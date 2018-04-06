@@ -264,7 +264,7 @@ class CLightning
      */
     public function listpayments()
     {
-        return $this->execute('listpayments', []);
+        return $this->execute('listpayments', [], PaymentList::class);
     }
 
     /**
