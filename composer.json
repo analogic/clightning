@@ -1,7 +1,7 @@
 {
-  "name": "analogic/lightning-charge-client-php7",
-  "description": "PHP7 client for the Lightning Charge REST API",
-  "version": "0.1.4",
+  "name": "analogic/clightning",
+  "description": "C-lightning PHP client",
+  "version": "0.0.1",
   "license": "MIT",
   "require": {
     "php": ">=7.1.0",
