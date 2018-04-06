@@ -86,7 +86,7 @@ class Channel
         $this->satoshis = $satoshis;
     }
 
-    public function getLastUpdate(): int
+    public function getLastUpdate(): ?int
     {
         return $this->lastUpdate;
     }
