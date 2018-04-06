@@ -292,9 +292,9 @@ class CLightning
     /**
      * Close the channel with peer {id}
      */
-    public function close()
+    public function close(string $id)
     {
-        return $this->execute('close', []);
+        return $this->execute('close', ['id' => $id]);
     }
 
     /**
