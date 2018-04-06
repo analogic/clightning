@@ -61,7 +61,7 @@ class CLightning
                     } else {
                         $object = $this->encoder->decode($buffer, 'json');
                     }
-                    echo "----> ".$buffer;
+
                     fclose($fp);
                     return $object;
                 } catch (NotEncodableValueException $e) {
