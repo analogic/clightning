@@ -270,14 +270,14 @@ class CLightning
     /**
      * Send payment specified by {bolt11} with optional {msatoshi} (if and only if {bolt11} does not have amount), {description} (required if {bolt11} uses description hash), {riskfactor} (default 1.0), and {maxfeepercent} (default 0.5) the maximum acceptable fee as a percentage (e.g. 0.5 => 0.5%)
      */
-    public function pay(string $bolt11, ?int $msatoshi = null, ?string $description = null, ?float $riskfactor = 1.0, float $mafeepercent = 0.5): Payment
+    public function pay(string $bolt11, ?int $msatoshi = null, ?string $description = null, ?float $riskfactor = 1.0, float $maxfeepercent = 0.5): Payment
     {
         return $this->execute('pay', [
             'bolt11' => $bolt11,
             'msatoshi' => $msatoshi,
             'description' => $description,
             'riskfactor' => $riskfactor,
-            'maxfeepercent' => $mafeepercent
+            'maxfeepercent' => $maxfeepercent
         ], Payment::class);
     }
 
