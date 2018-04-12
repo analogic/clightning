@@ -18,6 +18,8 @@ class CLightning
     /** @var JsonRPCEncoder */
     protected $encoder;
 
+    public $timeout = 1;
+
     public function __construct(string $dsn)
     {
         $this->dsn = $dsn;
@@ -38,8 +40,10 @@ class CLightning
             $this->initSerializer();
         }
 
-        $fp = stream_socket_client($this->dsn, $errno, $errstr, 2);
-        stream_set_timeout($fp, 1);
+        $fp = stream_socket_client($this->dsn, $errno, $errstr, $this->timeout);
+        if ($this->timeout) {
+            stream_set_timeout($fp, $this->timeout);
+        }
 
         if (!$fp) {
             throw new \RuntimeException("$errstr ($errno)");
