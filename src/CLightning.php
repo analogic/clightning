@@ -18,7 +18,7 @@ class CLightning
     /** @var JsonRPCEncoder */
     protected $encoder;
 
-    public $timeout = 1;
+    public $timeout = 5;
 
     public function __construct(string $dsn)
     {
