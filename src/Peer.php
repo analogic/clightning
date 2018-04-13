@@ -28,7 +28,7 @@ class Peer
         $this->connected = $connected;
     }
 
-    public function getChannels(): array
+    public function getChannels(): ?array
     {
         return $this->channels;
     }

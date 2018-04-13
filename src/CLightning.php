@@ -178,9 +178,9 @@ class CLightning
     /**
      * Wait for the next invoice to be paid, after {lastpay_index} (if supplied)
      */
-    public function waitanyinvoice()
+    public function waitanyinvoice(int $last_index = 0)
     {
-        return $this->execute('waitanyinvoice', []);
+        return $this->execute('waitanyinvoice', ['lastpay_index' => $last_index]);
     }
 
     /**

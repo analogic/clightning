@@ -96,7 +96,7 @@ class Channel
         $this->lastUpdate = $lastUpdate;
     }
 
-    public function getBaseFeeMillisatoshi(): int
+    public function getBaseFeeMillisatoshi(): ?int
     {
         return $this->baseFeeMillisatoshi;
     }
@@ -106,7 +106,7 @@ class Channel
         $this->baseFeeMillisatoshi = $baseFeeMillisatoshi;
     }
 
-    public function getFeePerMillionth(): int
+    public function getFeePerMillionth(): ?int
     {
         return $this->feePerMillionth;
     }
@@ -116,7 +116,7 @@ class Channel
         $this->feePerMillionth = $feePerMillionth;
     }
 
-    public function getDelay(): int
+    public function getDelay(): ?int
     {
         return $this->delay;
     }
