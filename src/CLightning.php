@@ -18,11 +18,14 @@ class CLightning
     /** @var JsonRPCEncoder */
     protected $encoder;
 
+    protected $logger;
+
     public $timeout = 5;
 
-    public function __construct(string $dsn)
+    public function __construct(string $dsn, ?InOutLogger $logger)
     {
         $this->dsn = $dsn;
+        $this->logger = $logger;
     }
 
     protected function initSerializer()
@@ -50,11 +53,14 @@ class CLightning
         } else {
 
             $json = json_encode(array('method' => $method, 'params' => $params, 'id' => 0));
+            if ($this->logger) $this->logger->out($json);
             fwrite($fp, $json);
             $buffer = '';
 
             while (!feof($fp)) {
                 $data = fgets($fp, 1024);
+                if ($this->logger) $this->logger->in($data);
+
                 $buffer .= $data;
                 if (strlen($data) === 0) {
                     throw new \RuntimeException('Connection to RPC server lost.');
@@ -178,9 +184,9 @@ class CLightning
     /**
      * Wait for the next invoice to be paid, after {lastpay_index} (if supplied)
      */
-    public function waitanyinvoice(int $last_index = 0)
+    public function waitanyinvoice(?int $last_index = 0): ?Invoice
     {
-        return $this->execute('waitanyinvoice', ['lastpay_index' => $last_index]);
+        return $this->execute('waitanyinvoice', ['lastpay_index' => $last_index], Invoice::class);
     }
 
     /**

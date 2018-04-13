@@ -7,6 +7,8 @@ class Peer
     protected $id;
     protected $connected;
     protected $channels;
+    protected $alias;
+    protected $color;
 
     public function getId(): string
     {
@@ -38,5 +40,23 @@ class Peer
         $this->channels = $channels;
     }
 
+    public function getAlias(): ?string
+    {
+        return $this->alias;
+    }
 
+    public function setAlias(string $alias): void
+    {
+        $this->alias = $alias;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): void
+    {
+        $this->color = $color;
+    }
 }

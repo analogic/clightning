@@ -8,8 +8,12 @@ class Invoice
     protected $description;
     protected $status;
     protected $msatoshi;
+    protected $msatoshiReceived;
     protected $bolt11;
+    protected $payIndex;
     protected $paymentHash;
+    protected $paidTimestamp;
+    protected $paidAt;
     protected $expiryTime;
     protected $expiresAt;
 
@@ -92,4 +96,46 @@ class Invoice
     {
         return $this->expiryTime;
     }
+
+    public function getMsatoshiReceived(): ?int
+    {
+        return $this->msatoshiReceived;
+    }
+
+    public function setMsatoshiReceived(int $msatoshiReceived): void
+    {
+        $this->msatoshiReceived = $msatoshiReceived;
+    }
+
+    public function getPayIndex(): ?int
+    {
+        return $this->payIndex;
+    }
+
+    public function setPayIndex(int $payIndex): void
+    {
+        $this->payIndex = $payIndex;
+    }
+
+    public function getPaidTimestamp(): int
+    {
+        return $this->paidTimestamp;
+    }
+
+    public function setPaidTimestamp(?int $paidTimestamp): void
+    {
+        $this->paidTimestamp = $paidTimestamp;
+    }
+
+    public function getPaidAt(): int
+    {
+        return $this->paidAt;
+    }
+
+    public function setPaidAt(?int $paidAt): void
+    {
+        $this->paidAt = $paidAt;
+    }
+
+
 }
