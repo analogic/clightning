@@ -200,9 +200,9 @@ class CLightning
     /**
      * Decode {bolt11}, using {description} if necessary
      */
-    public function decodepay()
+    public function decodepay(?string $bolt11, ?string $description = null)
     {
-        return $this->execute('decodepay', []);
+        return $this->execute('decodepay', ['bolt11' => $bolt11, 'description' => $description]);
     }
 
     /**
