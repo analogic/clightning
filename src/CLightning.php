@@ -109,11 +109,13 @@ class CLightning
      * @return Invoice[]
      * @throws
      */
-    public function listInvoices(string $label = null): InvoiceList
+    public function listInvoices(?string $label = null): InvoiceList
     {
-        return $this->execute('listinvoices', [
-            'label' => $label,
-        ], InvoiceList::class);
+        $args = [];
+
+        if ($label !== null) $args['label'] = $label;
+
+        return $this->execute('listinvoices', $args, InvoiceList::class);
     }
 
 
@@ -154,7 +156,11 @@ class CLightning
      */
     public function listnodes(string $id = null): array
     {
-        return $this->execute('listnodes', ['id' => $id])['nodes'];
+        $args = [];
+
+        if ($id !== null) $args['id'] = $id;
+
+        return $this->execute('listnodes', $args)['nodes'];
     }
 
     /**
@@ -168,9 +174,14 @@ class CLightning
     /**
      * Show channel {short_channel_id} (or all known channels, if no {short_channel_id})
      */
-    public function listChannels(string $short_channel_id = null)
+    public function listChannels(?string $short_channel_id = null)
     {
-        return $this->execute('listchannels', ['short_channel_id' => $short_channel_id], ChannelList::class);
+        $args = [];
+
+        if ($short_channel_id !== null) $args['short_channel_id'] = $short_channel_id;
+
+
+        return $this->execute('listchannels', $args, ChannelList::class);
     }
 
     /**
@@ -186,7 +197,11 @@ class CLightning
      */
     public function waitanyinvoice(?int $last_index = 0): ?Invoice
     {
-        return $this->execute('waitanyinvoice', ['lastpay_index' => $last_index], Invoice::class);
+        $args = [];
+
+        if ($last_index !== null) $args['lastpay_index'] = $last_index;
+
+        return $this->execute('waitanyinvoice', $args, Invoice::class);
     }
 
     /**
@@ -202,7 +217,12 @@ class CLightning
      */
     public function decodepay(?string $bolt11, ?string $description = null)
     {
-        return $this->execute('decodepay', ['bolt11' => $bolt11, 'description' => $description]);
+        $args = [];
+
+        if ($bolt11 !== null) $args['bolt11'] = $bolt11;
+        if ($description !== null) $args['description'] = $description;
+
+        return $this->execute('decodepay', $description);
     }
 
     /**
@@ -282,13 +302,15 @@ class CLightning
      */
     public function pay(string $bolt11, ?int $msatoshi = null, ?string $description = null, ?float $riskfactor = 1.0, float $maxfeepercent = 0.5): Payment
     {
-        return $this->execute('pay', [
-            'bolt11' => $bolt11,
-            'msatoshi' => $msatoshi,
-            'description' => $description,
-            'riskfactor' => $riskfactor,
-            'maxfeepercent' => $maxfeepercent
-        ], Payment::class);
+        $args = [];
+
+        $args['bolt11'] = $bolt11;
+        if ($msatoshi !== null) $args['msatoshi'] = $msatoshi;
+        if ($description !== null) $args['description'] = $description;
+        if ($riskfactor !== null) $args['riskfactor'] = $riskfactor;
+        if ($maxfeepercent !== null) $args['maxfeepercent'] = $maxfeepercent;
+
+        return $this->execute('pay', $args, Payment::class);
     }
 
     /**
@@ -296,7 +318,12 @@ class CLightning
      */
     public function listPeers(?string $level = null, ?string $id = null)
     {
-        return $this->execute('listpeers', ['level' => $level, 'id' => $id], PeerList::class);
+        $args = [];
+
+        if ($level !== null) $args['level'] = $level;
+        if ($id !== null) $args['id'] = $id;
+
+        return $this->execute('listpeers', $args, PeerList::class);
     }
 
     /**
