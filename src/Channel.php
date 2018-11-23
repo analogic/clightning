@@ -36,7 +36,7 @@ class Channel
         $this->destination = $destination;
     }
 
-    public function getShortChannelId(): string
+    public function getShortChannelId(): ?string
     {
         return $this->shortChannelId;
     }

@@ -1,7 +1,7 @@
 {
   "name": "analogic/clightning",
   "description": "C-lightning PHP client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "require": {
     "php": ">=7.1.0",
