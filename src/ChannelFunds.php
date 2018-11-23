@@ -30,7 +30,7 @@ class ChannelFunds
         $this->fundingTxid = $fundingTxid;
     }
 
-    public function getShortChannelId(): string
+    public function getShortChannelId(): ?string
     {
         return $this->shortChannelId;
     }
