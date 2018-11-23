@@ -146,9 +146,13 @@ class CLightning
     /**
      * Connect to {id} at {host} (which can end in ':port' if not default). {id} can also be of the form id@host
      */
-    public function connect(string $id, string $host)
+    public function connect(string $id, ?string $host = null)
     {
-        return $this->execute('connect', ['id' => $id, 'host' => $host]);
+        $args = ['id' => $id];
+
+        if ($host != null) $args['host'] = $host;
+
+        return $this->execute('connect', $args);
     }
 
     /**
